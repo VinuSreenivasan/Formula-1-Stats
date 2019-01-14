@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <title>Formula 1 Stats</title>
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+    <link rel="stylesheet" href="public/css/styles.css" />
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+    <script src="https://d3js.org/d3.v5.js"></script>
+    <script src="https://labratrevenge.com/d3-tip/javascripts/d3.tip.v0.6.3.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/topojson/1.6.19/topojson.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-tip/0.7.1/d3-tip.min.js"></script>
+    <script src="https://d3js.org/d3-geo-projection.v2.js"></script>
+    <script src="https://d3js.org/topojson.v1.min.js"></script>
+
+    <!-- Range slider code -->
+    <script src="public/js/d3RangeSlider.js"></script>
+    <!-- Range slider style -->
+    <link rel="stylesheet" href="public/css/d3RangeSlider.css" />
+
+    <script src="public/js/map.js" async></script>
+    <script src="public/js/teams.js" async></script>
+    <script src="public/js/drivers.js" async></script>
+    <script src="public/js/driverChart.js" async></script>
+    <script src="public/js/script.js" async></script>
+
+
+</head>
+<body>
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-nav-demo" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <!--<a class="navbar-brand" href="#">Formula 1 Stats</a>-->
+            </div>
+            <div class="collapse navbar-collapse" id="bs-nav-demo">
+                <ul class="nav navbar-nav">
+                    <li><a href="index.html">Home</a></li>
+                </ul>
+                <<ul class="nav navbar-nav navbar-right">
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+<div class="tab">
+    <button class="tablinks" id=defaultOpen onclick="openTab(event, 'Teams')">Teams</button>
+    <button class="tablinks" onclick="openTab(event, 'Drivers')">Drivers</button>
+    <button class="tablinks" onclick="openTab(event, 'Circuits')">Circuits</button>
+    <button class="tablinks" onclick="openTab(event, 'Demo')">Demo</button>
+</div>
+
+<div id="Teams" class="tabcontent">
+    <div class="wrapper">
+        <h2>Click and drag the bar to select a range</h2>
+        <div id="slider-container"></div>
+        <div id="range-label">1970 - 1980</div>
+        <div id="bubble-chart">
+            <div id="hover-text"></div>
+        </div>
+        <div id="team-template" class="teamWrapper">
+            <h2 id="magicText">Click on the team name to see the magic</h2>
+            <div id="bar-chart"></div>
+            <div id="info-box"></div>
+        </div>
+    </div>
+</div>
+
+    <div id="temp-select"></div>
+
+<div id="Drivers" class="tabcontent">
+    <div id="driver_attributes">
+        <div id="dropdown">
+            <span>Year From</span>
+            <select id="YearFrom"></select>
+            <span>Year To</span>
+            <select id="YearTo"></select>
+        </div>
+
+        <div id="driver-select">
+            <button id="driver-select-btn" class="button"> Select another driver </button>
+        </div>
+
+        <span id="driver-names"></span>
+
+        <div id="driver-details" class="driver-border">
+            <svg width="300" height="300" id="image"></svg>
+            <svg width="426" height="300" id="details"></svg>
+        </div>
+    </div>
+
+    <div id="performance_years">
+        <div class="wrapper">
+            <div id="playerdropdown">
+                <span>Select drivers for comparison</span>
+                <select id="select2-search"></select>
+                <span>Select attribute</span>
+                <select id="attribute-search"></select>
+            </div>
+            <svg  id="lineChart">
+                <g id="xAxis"></g>
+                <g id="yAxis"></g>
+            </svg>
+        </div>
+        <div  id="selected-drivers"></div>
+    </div>
+</div>
+
+<div id="Circuits" class="tabcontent">
+    <div class="map-select">
+    <button id=map-selectAll-btn>All Circuits</button>
+    <button id=map-select-btn>Top Circuits</button>
+    </div>
+        <div id="map-chart" class="mapview"></div>
+        <div id="map-template">
+            <svg width="500" height="300" id="map-picture"></svg>
+            <svg width="500" height="100" id="map-text"></svg>
+        </div>
+        <div id="table-template" class="innerWrapper">
+            <div id="table"></div>
+        </div>
+</div>
+
+<div id="Demo" class="tabcontent">
+    <iframe id="demo-video" width="800" height="500"
+            src="https://www.youtube.com/embed/44OZ1eZ4AP0" frameborder="0" allowfullscreen>
+    </iframe>
+</div>
+</body>
+</html>

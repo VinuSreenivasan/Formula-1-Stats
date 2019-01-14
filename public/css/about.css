@@ -1,0 +1,35 @@
+body{
+	background-color: white;
+    background-size: cover;
+    background-position: center; 
+    font-family: Lato;
+
+}
+#content {
+    position: relative;
+    top: 100px;
+    width: 70%;
+    margin: auto;
+    padding:20px;
+    text-align : justify;
+    color : black;
+    /*background-color: rgba(255,255,255,0.6);*/
+}
+.video {
+    margin-top: 100px;
+    margin: 100 auto;
+    text-align: center;
+}
+#links {
+    position: relative;
+    top: 80px;
+    width: 70%;
+    margin: auto;
+    padding:20px;
+    text-align : justify;
+    /*background-color: rgba(255,255,255,0.6);8*/
+}
+#linkedin{
+	font-size : 20px;
+	color: red;
+}
