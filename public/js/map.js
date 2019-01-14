@@ -4,9 +4,7 @@ class Map {
     /** Creates a Map Object */
     constructor() {
 
-        //this.projection = d3.geoWinkel3().scale(125).translate([420, 190]);
         this.projection = d3.geoEquirectangular().scale(125).translate([420, 190]);
-
 
     }
 
@@ -98,11 +96,6 @@ class Map {
 						    	   "<strong>Most Successful Team: </strong> <span style='color:red'>" + d.WinningTeam + "</span>"
 						    	    + "<br/>" +"<br/>" +
 						    	   "<strong>Number of Wins: </strong> <span style='color:red'>" + d.NumWins + "</span>";
-
-
-
-
-						   
   				})
 
             svg.call(tip);
@@ -135,9 +128,6 @@ class Map {
                 .style("cursor","pointer");
 
             circles.on("mouseover",tip.show);
-
-
-
             circles.on("mouseout",tip.hide);
 
             circles.on("click",function(d){
@@ -221,11 +211,6 @@ class Map {
 						    	   "<strong>Most Successful Team: </strong> <span style='color:red'>" + d.WinningTeam + "</span>"
 						    	    + "<br/>" +"<br/>" +
 						    	   "<strong>Number of Wins: </strong> <span style='color:red'>" + d.NumWins + "</span>";
-
-
-
-
-						   
   				})
 
             svg.call(tip);
@@ -256,12 +241,7 @@ class Map {
 
 
             circles.on("mouseover",tip.show);
-
-
             circles.on("mouseout",tip.hide);
-
-
-
 
             circles.on("click",function(d){
             	that.drawCar(d.WinningTeam,d.NumWins,d.CircuitName);
@@ -297,11 +277,8 @@ class Map {
                             .append('td')
                             .text(function (d) { return d.value; });
 
-           
         };
     
-
-        
 
         circuits();
 
@@ -375,4 +352,3 @@ class Map {
     }
      
 }
-

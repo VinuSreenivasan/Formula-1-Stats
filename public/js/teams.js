@@ -64,7 +64,7 @@ class Teams {
                         .offset([-10, 0])
                         .html(function(d) {
                           return "<strong>Team Nationality: </strong> <span style='color:red'>" + d.teamNationality + "</span>"                
-                    })
+                    });
 
             this.svg.call(tipBar);
             let that=this;
@@ -80,8 +80,8 @@ class Teams {
 
             let lCol = "totalRaces";
             let rCol = "totalWins";
-            let fromMaxValue = d3.max(data, function(d){ return d[lCol]; })
-            let toMaxValue = d3.max(data, function(d){ return d[rCol]; })
+            let fromMaxValue = d3.max(data, function(d){ return d[lCol]; });
+            let toMaxValue = d3.max(data, function(d){ return d[rCol]; });
             let xFrom = d3.scaleLinear()
                           .domain([0, fromMaxValue])
                           .range([0,  width]);
@@ -273,7 +273,7 @@ class Teams {
 
     bubbleData(filteredYearData, data, selectedTeam){
 
-      let selectedTeamData = filteredYearData.filter(function(d){ return d.name_x == selectedTeam; })
+      let selectedTeamData = filteredYearData.filter(function(d){ return d.name_x == selectedTeam; });
       let driverDetailsNest = d3.nest()
                   .key(function(d){ return d.driverRef; })
                   .key(function(d){ return d.season; })
@@ -347,7 +347,7 @@ class Teams {
                                + "<br/>" + "<br/>" +
                                "<strong>Number of races: </strong> <span style='color:red'>" + d.numRaces + "</span>";
                          
-              })
+              });
 
               svgBubble.call(tip);
 
